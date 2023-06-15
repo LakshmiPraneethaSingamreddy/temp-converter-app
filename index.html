@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      margin: 20px;
+      background-image: url('im1.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      width: 150px;
+    }
+
+    button {
+      padding: 8px 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    h2 {
+        font-size: 48px;
+    }
+    .input-box {
+        height:30px;
+        width:50px;
+        background-color: whitesmoke;
+        color: black;
+    }
+    label {
+        font-size: 48px;
+        margin:40px auto 40px auto;
+        
+    }
+   .butn{
+    font-size: 48px;
+    margin:10px auto 10px auto;
+  }
+  button{
+    height:40px;
+    width:150px;
+    margin:30px auto 50px auto;
+    display:block;
+  }
+  input[type='radio']{
+    transform: scale(2);
+    
+    margin:15px;
+    
+}
+  </style>
+</head>
+<body>
+    
+  <h2>Temperature Converter</h2>
+  
+  <label for="temperature">Temperature:</label>
+  <input class="input-box" type="text" id="temperature" placeholder="Enter temperature (integer only)">
+  
+  <label for="conversionType">Conversion Type:</label>
+  <input class="butn" type="radio" name="conversionType" value="celsiusToFahrenheit" checked> Celsius to Fahrenheit
+  <input class="butn" type="radio" name="conversionType" value="fahrenheitToCelsius"> Fahrenheit to Celsius
+  
+  <button onclick="convertTemperature()">Convert</button>
+
+  <p id="result"></p>
+
+  <script>
+    function convertTemperature() {
+      var temperatureInput = document.getElementById('temperature').value;
+      if (temperatureInput !== '') {
+        var temperature = parseInt(temperatureInput);
+        var conversionType = document.querySelector('input[name="conversionType"]:checked').value;
+        var convertedTemperature;
+
+        if (conversionType === 'celsiusToFahrenheit') {
+          convertedTemperature = (temperature * 9 / 5) + 32;
+        } else if (conversionType === 'fahrenheitToCelsius') {
+          convertedTemperature = (temperature - 32) * 5 / 9;
+        }
+
+        document.getElementById('result').textContent = 'Converted temperature: ' + convertedTemperature.toFixed(2);
+      }
+    }
+  </script>
+</body>
+</html>
